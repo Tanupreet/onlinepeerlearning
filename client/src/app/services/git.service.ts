@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-
-
-
 
 @Injectable()
 export class GitService {
@@ -43,10 +40,10 @@ export class GitService {
 
    }
 
-/*   getTree() {
+ getTree(repo) {
        if (this.userName) {
-           return this._http.get('http://api.github.com/repos/' + this.userName +
-                   this.repo + 'contents?client_id=' + this.clientId +
+           return this._http.get('http://api.github.com/repos/' + this.userName + "/" +
+                   repo + '/contents?client_id=' + this.clientId +
                    '&client_secret=' + this.clientSecret)
                .map(res => res.json())
                .catch(this.handleError);
@@ -54,16 +51,19 @@ export class GitService {
    }
 
 
-   getFile() {
+   getFile(repo, file) {
        if (this.userName) {
-           return this._http.get('http://api.github.com/repos/' + this.userName +
-                   this.repo + 'contents' + this.file + '?client_id=' + this.clientId +
-                   '&client_secret=' + this.clientSecret)
-               .map(res => res.json())
-               .catch(this.handleError);
+
+        	  let headers = new Headers({ 'accept': "application/vnd.github.VERSION.raw" });
+   let options= new RequestOptions({ headers: headers });
+           return this._http.get('http://api.github.com/repos/' + this.userName + "/" +
+                   repo + '/contents/' + file + '?client_id=' + this.clientId +
+                   '&client_secret=' + this.clientSecret, options)
+                //.map(res => res.json())
+               // .catch(this.handleError);
        }
    }
-*/
+
 
    updateUser(userName: string) {
        this.userName = userName;

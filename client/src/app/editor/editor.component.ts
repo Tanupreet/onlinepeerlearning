@@ -5,7 +5,7 @@ import 'brace';
 import 'brace/ext/language_tools';
 import 'brace/mode/html'; 
 import 'ace-builds/src-min-noconflict/snippets/html';
-import { GitService } from '../services/git.service'
+import { GitService } from '../services/git.service';
 
 @Component({
   selector: 'app-editor',
@@ -15,9 +15,13 @@ import { GitService } from '../services/git.service'
 export class EditorComponent implements OnInit {
 
   title = 'app';
-  text:string = "";
+  text:string = "Enter your code here";
   @ViewChild('editor') editor;
-  githubUser: any
+  githubUser: any;
+  selectedValue: any;
+  data: any;
+  fileData:any;
+  selectedfile: any;
   options: any = {
   	maxLines: 1000, 
   	printMargin: false,
@@ -26,19 +30,42 @@ export class EditorComponent implements OnInit {
     enableLiveAutocompletion: true,
 
   };
+  val:any
 
-    constructor(private gitSerivce:GitService){}
+    constructor(private gitService:GitService){}
     onChange(code) {
         console.log("new code", code);
     } 
 
     ngOnInit() {
    /* 	this.editor.getEditor().$blockScrolling = Infinity;*/
-      this.gitSerivce.getRepos()
+      this.gitService.getRepos()
       .subscribe(repos => {
                 // console.log(repos);
                 this.githubUser = repos;
       console.log(this.githubUser)
     })
+
+     
 }
+ reposearch()
+      {
+        
+        console.log(this.selectedValue)
+        this.gitService.getTree(this.selectedValue)
+        .subscribe(data=>this.data=data)
+      }
+
+
+      showFile(reponame, filename) {
+        this.gitService.getFile(reponame, filename)
+        .subscribe(data=>{
+
+          this.fileData=data;
+
+          this.text=this.fileData._body;
+        console.log(JSON.stringify(this.text))
+      }, err=>console.log(err))
+      }
+
 }
