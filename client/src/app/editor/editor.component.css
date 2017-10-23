@@ -1,30 +1,74 @@
+/**
+* jumbotron styling
+*/
 .jumbotron{
 	background-color:  #34495e;
 }
+
+/**
+* dropdown
+*/
 .dropdown {
 	float: left;
 }
+
+/**
+* margin to button group
+*/
 .btn-group {
 	margin-left: 50px;
 }
+
+/**
+*color to list items
+*/
 .list-unstyled {
 	color: skyblue;
 }
+
+/**
+* logo styling
+*/
 .logo{
 margin:auto; 
     height: 100px;
     width: 200px;
     float: right;
 }
+
+/**
+* code editor styling
+*/
 .editor {
-	min-height: 400px; 
+	min-height: 300px; 
 	max-height: auto; 
 	border:4px solid black; 
 	border-left: #e3e3e3 solid; 
 	overflow-y: scroll !important; 
 	overflow-x: hidden;
+	font-size: 18px;
+	box-shadow: 5px 5px 5px #888;
+  -moz-box-shadow: 5px 5px 5px #888;
+  -webkit-box-shadow: 5px 5px 5px #888;
 }
+
+/**
+* console styling
+*/
 .console {
-	background-color: darkgrey;
-	height: 400px;
+	background-color: black;
+	color: white;
+	min-height: 170px;
+  border:2px solid white;
+  box-shadow: 5px 5px 5px #888;
+  -moz-box-shadow: 5px 5px 5px #888;
+  -webkit-box-shadow: 5px 5px 5px #888;
 }
+
+/**
+* margin to console text
+*/
+.console p{
+	margin-left: 20px;
+}
+
