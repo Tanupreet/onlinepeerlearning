@@ -32,24 +32,26 @@
  <div class="container-fluid">
    <div class="row">
      <div class="col-md-2 list">
-       <h3>FILES</h3>
-       <ul class="list-unstyled">
-         <li>
-           index.html
-         </li>
-         <li>
-           README.md
-         </li>
-         <li>
-           script.js
-         </li>
-         <li>
-           style.css
-         </li>
-         <li>
-           New file
-         </li>
-       </ul>
+      <div>
+            <div class="card">
+                <h5 class="card-header">Repos</h5>
+                <div class="card-block">
+
+                    <div class="list-group">
+
+                        <!-- <a *ngFor="let repo of githubUser" href="{{repo.html_url}}" target="_blank" class="list-group-item list-group-item-action">
+                            <h6 class="list-group-item-heading">{{repo.name}}</h6>
+                            <p class="list-group-item-text">{{repo.description}}</p>
+                        </a> -->
+<select name="carlist" form="carform">
+  <option *ngFor="let repo of githubUser" value="{{repo.name}}">{{repo.name}}</option>
+</select>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
      </div>
      <div class="col-md-10">
        <div class="row">

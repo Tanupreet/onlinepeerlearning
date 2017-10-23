@@ -5,6 +5,7 @@ import 'brace';
 import 'brace/ext/language_tools';
 import 'brace/mode/html'; 
 import 'ace-builds/src-min-noconflict/snippets/html';
+import { GitService } from '../services/git.service'
 
 @Component({
   selector: 'app-editor',
@@ -15,20 +16,29 @@ export class EditorComponent implements OnInit {
 
   title = 'app';
   text:string = "";
-      @ViewChild('editor') editor;
+  @ViewChild('editor') editor;
+  githubUser: any
   options: any = {
   	maxLines: 1000, 
   	printMargin: false,
     enableBasicAutocompletion: true,
     enableSnippets: true,
     enableLiveAutocompletion: true,
+
   };
-    
+
+    constructor(private gitSerivce:GitService){}
     onChange(code) {
         console.log("new code", code);
     } 
 
     ngOnInit() {
-    	this.editor.getEditor().$blockScrolling = Infinity;
-    }
+   /* 	this.editor.getEditor().$blockScrolling = Infinity;*/
+      this.gitSerivce.getRepos()
+      .subscribe(repos => {
+                // console.log(repos);
+                this.githubUser = repos;
+      console.log(this.githubUser)
+    })
+}
 }
