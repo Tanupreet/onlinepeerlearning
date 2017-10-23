@@ -1,0 +1,67 @@
+<body>
+  <!-- jumbotron starts here -->
+  <div class="container-fluid">
+    <div class="jumbotron">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="about-us" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select Language
+        </button>
+        <!-- select language -->
+        <div class="dropdown-menu" aria-labelledby="about-us">
+          <a class="dropdown-item" href="#">HTML</a>
+          <a class="dropdown-item" href="#">CSS</a>
+          <a class="dropdown-item" href="#">Java Script</a>
+        </div>
+      </div>
+      <!-- image logo -->
+      <img src="http://3.bp.blogspot.com/-6NpoBGfz5VA/VlUgajBugeI/AAAAAAAAFrc/BifJXfPLnF4/s640/android-code-editing-apps.png" alt="logo" class="logo">
+      <!-- button section -->
+      <div class="btn-group">
+        <button class="btn btn-default" type="button">
+          Run
+        </button>
+        <button class="btn btn-default" type="button">
+          Save
+        </button>
+        <button class="btn btn-default" type="button">
+          Clear
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- jumbotron ends here -->
+  <!-- 3 column section -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- column for folder structure-->
+      <div class="col-md-2">
+        <h3>FILES</h3>
+        <ul class="list-unstyled">
+          <li>
+            index.html
+          </li>
+          <li>
+            README.md
+          </li>
+          <li>
+            script.js
+          </li>
+          <li>
+            style.css
+          </li>
+          <li>
+            New file
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <!-- editor section -->
+        <div ace-editor [(text)]="text" [mode]="'javascript'" [theme]="'tomorrow_night_bright'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000" class="editor">
+        </div>
+      </div>
+      <!-- console output section -->
+      <div class="col-md-4 console">
+      </div>
+    </div>
+  </div>
+</body>

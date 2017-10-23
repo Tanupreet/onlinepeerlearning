@@ -1,0 +1,29 @@
+.jumbotron{
+	background-color:  #34495e;
+}
+.dropdown {
+	float: left;
+}
+.btn-group {
+	margin-left: 50px;
+}
+.list-unstyled {
+	color: skyblue;
+}
+.logo{
+margin:auto; 
+    height: 100px;
+    width: 200px;
+    float: right;
+}
+.editor {
+	min-height: 400px; 
+	max-height: auto; 
+	border:4px solid black; 
+	border-left: #e3e3e3 solid; 
+	overflow-y: scroll !important; 
+	overflow-x: hidden;
+}
+.console {
+	background-color: darkgrey;
+}
