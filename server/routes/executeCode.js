@@ -5,7 +5,7 @@ const vm = require('../utility')
 
 router.post('/executeCode', function(req, res) {
 
-    let result = vm.add(req.body.script);
+    let result = vm.add(req.body.run);
     res.json({ result: result })
 
 });
