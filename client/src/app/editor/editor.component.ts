@@ -1,11 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AceEditorModule } from 'ng2-ace-editor'; 
 import { FormsModule } from '@angular/forms';
 import 'brace';
 import 'brace/ext/language_tools';
 import 'brace/mode/html'; 
 import 'ace-builds/src-min-noconflict/snippets/html';
-import { GitService } from '../services/git.service';
+
+
+import { EditorService } from '../services/editor.service';
+import { GitService } from '../services/git.service'
+
 
 @Component({
   selector: 'app-editor',
@@ -14,40 +18,55 @@ import { GitService } from '../services/git.service';
 })
 export class EditorComponent implements OnInit {
 
+  //declaring variables
+  enter:string;
   title = 'app';
+
   text:string = "Enter your code here";
-  @ViewChild('editor') editor;
   githubUser: any;
   selectedValue: any;
   data: any;
   fileData:any;
   selectedfile: any;
+   output:any;
+  value:{}
+
   options: any = {
   	maxLines: 1000, 
   	printMargin: false,
-    enableBasicAutocompletion: true,
-    enableSnippets: true,
-    enableLiveAutocompletion: true,
 
   };
   val:any
 
-    constructor(private gitService:GitService){}
-    onChange(code) {
-        console.log("new code", code);
-    } 
+  //creating the instances of services
+  constructor(private editorService: EditorService,private gitService:GitService){}
 
-    ngOnInit() {
-   /* 	this.editor.getEditor().$blockScrolling = Infinity;*/
-      this.gitService.getRepos()
-      .subscribe(repos => {
-                // console.log(repos);
-                this.githubUser = repos;
-      console.log(this.githubUser)
+  //method to execute the code 
+  run(text){
+    this.enter="output"
+    this.value={run:text
+    
+  }
+    this.editorService.runCode(this.value).subscribe(data => {
+      this.output=data.result;
+      console.log(this.output)
+    }, err=>this.output=err)
+  }
+
+  //method to clear the terminal
+  clear(text) {
+    this.text=null;
+  }
+
+  //method to get github repositories
+  ngOnInit() {
+    this.gitService.getRepos()
+    .subscribe(repos => {
+      this.githubUser = repos;
+
     })
+  }
 
-     
-}
  reposearch()
       {
         
@@ -67,5 +86,4 @@ export class EditorComponent implements OnInit {
         console.log(JSON.stringify(this.text))
       }, err=>console.log(err))
       }
-
 }

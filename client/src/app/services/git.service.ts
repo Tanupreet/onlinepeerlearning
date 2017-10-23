@@ -18,6 +18,7 @@ export class GitService {
        this.userName = 'Tanupreet';
    }
 
+   //method to get github username
    getUser() {
        if (this.userName) {
            return this._http.get('http://api.github.com/users/' + this.userName +
@@ -29,6 +30,8 @@ export class GitService {
 
    }
 
+
+   //method to get all the repositories of the user
    getRepos() {
        if (this.userName) {
            return this._http.get('http://api.github.com/users/' + this.userName +
@@ -64,11 +67,14 @@ export class GitService {
        }
    }
 
+  
+  //method to update the user
 
    updateUser(userName: string) {
        this.userName = userName;
    }
 
+   //method to handle error
    private handleError(error: any) {
 
        if (error.status === 401) {

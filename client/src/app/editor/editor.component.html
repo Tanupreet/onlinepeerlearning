@@ -17,13 +17,16 @@
       <img src="http://3.bp.blogspot.com/-6NpoBGfz5VA/VlUgajBugeI/AAAAAAAAFrc/BifJXfPLnF4/s640/android-code-editing-apps.png" alt="logo" class="logo">
       <!-- button section -->
       <div class="btn-group">
-        <button class="btn btn-default" type="button">
+
+        <button class="btn btn-default" type="button" (click)="run(text)">
+
           Run
         </button>
         <button class="btn btn-default" type="button">
           Save
         </button>
-        <button class="btn btn-default" type="button">
+
+        <button class="btn btn-default" type="button" (click)="clear(text)">
           Clear
         </button>
       </div>
@@ -34,6 +37,7 @@
       <div class="col-md-2 list">
         <div>
           <div class="card">
+
             <h5 class="card-header">Repos</h5>
             <div class="card-block">
               <div class="list-group">
@@ -43,21 +47,27 @@
                 <a *ngFor="let repo of data" type="button" class="list-group-item list-group-item-action" (click)="showFile(selectedValue, repo.name)">
                   <h6 class="list-group-item-heading">{{repo.name}}</h6>
                 </a>
+
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-8">
+
+      <div class="col-md-10">
         <div class="row">
           <div class="col-md-12">
-            <div ace-editor [(text)]="text" [mode]="'javascript'" [theme]="'tomorrow_night_bright'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" class="editor">
+            <!-- Ace editor section-->
+            <div ace-editor [(text)]="text" [mode]="'javascript'" [theme]="'tomorrow_night_blue'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" class="editor">
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12 mt-1">
+          <div class="col-md-12 mt-3">
+            <!-- console section-->
             <div class="console">
+              <h1>{{enter}}</h1>
+              <p>{{output}}</p>
             </div>
           </div>
         </div>

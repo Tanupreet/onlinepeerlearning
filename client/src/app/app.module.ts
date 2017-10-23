@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
 import { GitService } from './services/git.service'
+import { EditorService } from './services/editor.service'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { GitService } from './services/git.service'
      }
    ])
  ],
-  providers: [GitService],
+  providers: [GitService,EditorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
