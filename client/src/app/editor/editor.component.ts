@@ -29,14 +29,14 @@ export class EditorComponent implements OnInit {
   data: any;
   fileData:any;
   selectedfile: any;
-   output:any;
+  output:any;
   value:{}
 
   options: any = {
   	maxLines: 1000, 
   	printMargin: false,
-
   };
+  
   val:any
 
   //creating the instances of services
