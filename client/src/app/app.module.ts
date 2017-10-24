@@ -13,6 +13,8 @@ import { ChatService } from './services/chat.service';
 import { OnlineusersComponent } from './onlineusers/onlineusers.component';
 import { GroupChatComponent } from './group-chat/group-chat.component';
 import { ProfileComponent } from './profile/profile.component'
+import { RunKitEmbedComponent } from 'angular-runkit'
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ProfileComponent } from './profile/profile.component'
     EditorComponent,
     OnlineusersComponent,
     GroupChatComponent,
-    ProfileComponent
+    ProfileComponent,
+    RunKitEmbedComponent
   ],
   imports: [
     BrowserModule,
