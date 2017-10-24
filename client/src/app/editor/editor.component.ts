@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AceEditorModule } from 'ng2-ace-editor'; 
 import { FormsModule } from '@angular/forms';
+import * as $ from 'jquery';
+
 import 'brace';
 import 'brace/ext/language_tools';
 import 'brace/mode/html'; 
@@ -12,84 +14,100 @@ import { GitService } from '../services/git.service'
 
 
 @Component({
-  selector: 'app-editor',
-  templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css']
+	selector: 'app-editor',
+	templateUrl: './editor.component.html',
+	styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit {
 
-  //declaring variables
-  enter:string;
-  title = 'app';
-  lang: any;
+	//declaring variables
+	enter:string;
+	title = 'app';
+	lang: any;
 
-  text:string = "Enter your code here";
-  githubUser: any;
-  selectedValue: any;
-  data: any;
-  fileData:any;
-  selectedfile: any;
-   output:any;
-  value:{}
+	text:string = "Enter your code here";
+	githubUser: any;
+	selectedValue: any;
+	data: any;
+	fileData:any;
+	selectedfile: any;
+	 output:any;
+	value:{}
+	windowRef:any;
+	screenSharingLink:any;
 
-  options: any = {
-  	maxLines: 1000, 
-  	printMargin: false,
+	options: any = {
+		maxLines: 1000, 
+		printMargin: false,
 
-  };
-  val:any
+	};
+	val:any;
+	//creating the instances of services
+	constructor(private editorService: EditorService,private gitService:GitService){}
 
-  //creating the instances of services
-  constructor(private editorService: EditorService,private gitService:GitService){}
+screenShare(call) {
+	 this.windowRef= window;
+	 if (this.windowRef.TogetherJS) {
+		 this.windowRef.TogetherJS();
 
-  //method to execute the code 
-  run(text){
-    this.enter="output"
-    this.value={run:text
-    
-  }
-    this.editorService.runCode(this.value).subscribe(data => {
-      this.output=data.result;
-      console.log(this.output)
-    }, err=>this.output=err)
-  }
+		 setTimeout(function(){
+				$('.togetherjs-dock-right').remove();
+				this.screenSharingLink=$('.togetherjs-share-link').val();
+				console.log("=======11111",this.screenSharingLink);
+				$('#togetherjs-share').remove();
+				$('#togetherjs-window-pointer-right').remove();
+			},1000)
+	 }
+ }
 
-  //method to clear the terminal
-  clear(text) {
-    this.text=null;
-  }
+	//method to execute the code 
+	run(text){
+		this.enter="output"
+		this.value={run:text
+		
+	}
+		this.editorService.runCode(this.value).subscribe(data => {
+			this.output=data.result;
+			console.log(this.output)
+		}, err=>this.output=err)
+	}
 
-  //method to get github repositories
-  ngOnInit() {
-    this.lang = "javascript";
-    this.gitService.getRepos()
-    .subscribe(repos => {
-      this.githubUser = repos;
+	//method to clear the terminal
+	clear(text) {
+		this.text=null;
+	}
 
-    })
-  }
+	//method to get github repositories
+	ngOnInit() {
+		this.lang = "javascript";
+		this.gitService.getRepos()
+		.subscribe(repos => {
+			this.githubUser = repos;
+
+		})
+	}
 
  reposearch()
-      {
-        
-        console.log(this.selectedValue)
-        this.gitService.getTree(this.selectedValue)
-        .subscribe(data=>this.data=data)
-      }
+			{
+				
+				console.log(this.selectedValue)
+				this.gitService.getTree(this.selectedValue)
+				.subscribe(data=>this.data=data)
+			}
 
 
-      showFile(reponame, filename) {
-        this.gitService.getFile(reponame, filename)
-        .subscribe(data=>{
+			showFile(reponame, filename) {
+				this.gitService.getFile(reponame, filename)
+				.subscribe(data=>{
 
-          this.fileData=data;
+					this.fileData=data;
 
-          this.text=this.fileData._body;
-        console.log(JSON.stringify(this.text))
-      }, err=>console.log(err))
-      }
+					this.text=this.fileData._body;
+				console.log(JSON.stringify(this.text))
+			}, err=>console.log(err))
+			}
 
-      mode(language) {
+			mode(language) {
 this.lang = language;
-      }
+			}
 }
