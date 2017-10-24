@@ -21,6 +21,7 @@ export class EditorComponent implements OnInit {
   //declaring variables
   enter:string;
   title = 'app';
+  lang: any;
 
   text:string = "Enter your code here";
   githubUser: any;
@@ -60,6 +61,7 @@ export class EditorComponent implements OnInit {
 
   //method to get github repositories
   ngOnInit() {
+    this.lang = "javascript";
     this.gitService.getRepos()
     .subscribe(repos => {
       this.githubUser = repos;
@@ -85,5 +87,9 @@ export class EditorComponent implements OnInit {
           this.text=this.fileData._body;
         console.log(JSON.stringify(this.text))
       }, err=>console.log(err))
+      }
+
+      mode(language) {
+this.lang = language;
       }
 }

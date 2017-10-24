@@ -8,9 +8,9 @@
         </button>
         <!-- select language -->
         <div class="dropdown-menu" aria-labelledby="about-us">
-          <a class="dropdown-item" href="#">HTML</a>
-          <a class="dropdown-item" href="#">CSS</a>
-          <a class="dropdown-item" href="#">Java Script</a>
+          <a class="dropdown-item" (click)="mode('html')">HTML</a>
+          <a class="dropdown-item" (click)="mode('css')">CSS</a>
+          <a class="dropdown-item" (click)="mode('javascript')">Java Script</a>
         </div>
       </div>
       <!-- image logo -->
@@ -58,7 +58,7 @@
         <div class="row">
           <div class="col-md-12">
             <!-- Ace editor section-->
-            <div ace-editor [(text)]="text" [mode]="'javascript'" [theme]="'tomorrow_night_blue'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" class="editor">
+            <div ace-editor [(text)]="text" [mode]=lang [theme]="'tomorrow_night_blue'" [options]="options" [readOnly]="false" [autoUpdateContent]="true" class="editor">
             </div>
           </div>
         </div>
