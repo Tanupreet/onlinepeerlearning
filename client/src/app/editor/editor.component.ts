@@ -20,6 +20,7 @@ import { GitService } from '../services/git.service'
 })
 export class EditorComponent implements OnInit {
 
+<<<<<<< HEAD
 	//declaring variables
 	enter:string;
 	title = 'app';
@@ -86,6 +87,58 @@ screenShare(call) {
 
 		})
 	}
+=======
+  //declaring variables
+  enter:string;
+  title = 'app';
+  lang: any;
+
+  text:string = "Enter your code here";
+  githubUser: any;
+  selectedValue: any;
+  data: any;
+  fileData:any;
+  selectedfile: any;
+  output:any;
+  value:{}
+
+  options: any = {
+  	maxLines: 1000, 
+  	printMargin: false,
+  };
+  
+  val:any
+
+  //creating the instances of services
+  constructor(private editorService: EditorService,private gitService:GitService){}
+
+  //method to execute the code 
+  run(text){
+    this.enter="output"
+    this.value={run:text
+    
+  }
+    this.editorService.runCode(this.value).subscribe(data => {
+      this.output=data.result;
+      console.log(this.output)
+    }, err=>this.output=err)
+  }
+
+  //method to clear the terminal
+  clear(text) {
+    this.text=null;
+  }
+
+  //method to get github repositories
+  ngOnInit() {
+    this.lang = "javascript";
+    this.gitService.getRepos()
+    .subscribe(repos => {
+      this.githubUser = repos;
+
+    })
+  }
+>>>>>>> 88bbfa882042c9458234ca4e4b9d25560c6cd38b
 
  reposearch()
 			{
