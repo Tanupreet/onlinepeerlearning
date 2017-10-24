@@ -11,14 +11,16 @@ import { GitService } from './services/git.service'
 import { EditorService } from './services/editor.service';
 import { ChatService } from './services/chat.service';
 import { OnlineusersComponent } from './onlineusers/onlineusers.component';
-import { GroupChatComponent } from './group-chat/group-chat.component'
+import { GroupChatComponent } from './group-chat/group-chat.component';
+import { RunKitEmbedComponent } from 'angular-runkit'
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
     OnlineusersComponent,
-    GroupChatComponent
+    GroupChatComponent,
+    RunKitEmbedComponent
   ],
   imports: [
     BrowserModule,
