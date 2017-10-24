@@ -11,14 +11,16 @@ import { GitService } from './services/git.service'
 import { EditorService } from './services/editor.service';
 import { ChatService } from './services/chat.service';
 import { OnlineusersComponent } from './onlineusers/onlineusers.component';
-import { GroupChatComponent } from './group-chat/group-chat.component'
+import { GroupChatComponent } from './group-chat/group-chat.component';
+import { ProfileComponent } from './profile/profile.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
     OnlineusersComponent,
-    GroupChatComponent
+    GroupChatComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,10 @@ import { GroupChatComponent } from './group-chat/group-chat.component'
       {
         path: 'onlineUsers',
         component: OnlineusersComponent
+      },
+      {
+        path: 'editProfile',
+        component: ProfileComponent
       }
    ])
  ],
