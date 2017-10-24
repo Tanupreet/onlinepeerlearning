@@ -20,31 +20,31 @@ import { GitService } from '../services/git.service'
 })
 export class EditorComponent implements OnInit {
 
-<<<<<<< HEAD
-	//declaring variables
-	enter:string;
-	title = 'app';
-	lang: any;
+  //declaring variables
+  enter:string;
+  title = 'app';
+  lang: any;
 
-	text:string = "Enter your code here";
-	githubUser: any;
-	selectedValue: any;
-	data: any;
-	fileData:any;
-	selectedfile: any;
-	 output:any;
-	value:{}
-	windowRef:any;
+  text:string = "Enter your code here";
+  githubUser: any;
+  selectedValue: any;
+  data: any;
+  fileData:any;
+  selectedfile: any;
+  output:any;
+  value:{};
+  	windowRef:any;
 	screenSharingLink:any;
 
-	options: any = {
-		maxLines: 1000, 
-		printMargin: false,
+  options: any = {
+  	maxLines: 1000, 
+  	printMargin: false,
+  };
+  
+  val:any
 
-	};
-	val:any;
-	//creating the instances of services
-	constructor(private editorService: EditorService,private gitService:GitService){}
+  //creating the instances of services
+  constructor(private editorService: EditorService,private gitService:GitService){}
 
 screenShare(call) {
 	 this.windowRef= window;
@@ -60,57 +60,6 @@ screenShare(call) {
 			},1000)
 	 }
  }
-
-	//method to execute the code 
-	run(text){
-		this.enter="output"
-		this.value={run:text
-		
-	}
-		this.editorService.runCode(this.value).subscribe(data => {
-			this.output=data.result;
-			console.log(this.output)
-		}, err=>this.output=err)
-	}
-
-	//method to clear the terminal
-	clear(text) {
-		this.text=null;
-	}
-
-	//method to get github repositories
-	ngOnInit() {
-		this.lang = "javascript";
-		this.gitService.getRepos()
-		.subscribe(repos => {
-			this.githubUser = repos;
-
-		})
-	}
-=======
-  //declaring variables
-  enter:string;
-  title = 'app';
-  lang: any;
-
-  text:string = "Enter your code here";
-  githubUser: any;
-  selectedValue: any;
-  data: any;
-  fileData:any;
-  selectedfile: any;
-  output:any;
-  value:{}
-
-  options: any = {
-  	maxLines: 1000, 
-  	printMargin: false,
-  };
-  
-  val:any
-
-  //creating the instances of services
-  constructor(private editorService: EditorService,private gitService:GitService){}
 
   //method to execute the code 
   run(text){
@@ -138,7 +87,6 @@ screenShare(call) {
 
     })
   }
->>>>>>> 88bbfa882042c9458234ca4e4b9d25560c6cd38b
 
  reposearch()
 			{
