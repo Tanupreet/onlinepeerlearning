@@ -8,12 +8,22 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
 import { GitService } from './services/git.service'
-import { EditorService } from './services/editor.service'
+import { EditorService } from './services/editor.service';
+import { ChatService } from './services/chat.service';
+import { OnlineusersComponent } from './onlineusers/onlineusers.component';
+import { GroupChatComponent } from './group-chat/group-chat.component';
+import { ProfileComponent } from './profile/profile.component'
+import { RunKitEmbedComponent } from 'angular-runkit'
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditorComponent
+    EditorComponent,
+    OnlineusersComponent,
+    GroupChatComponent,
+    ProfileComponent,
+    RunKitEmbedComponent
   ],
   imports: [
     BrowserModule,
@@ -27,10 +37,22 @@ import { EditorService } from './services/editor.service'
     {
        path:'editor',
        component:EditorComponent
-     }
+     },
+     {
+        path: 'groupChat',
+        component: GroupChatComponent
+      },
+      {
+        path: 'onlineUsers',
+        component: OnlineusersComponent
+      },
+      {
+        path: 'editProfile',
+        component: ProfileComponent
+      }
    ])
  ],
-  providers: [GitService,EditorService],
+  providers: [GitService,EditorService,ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
