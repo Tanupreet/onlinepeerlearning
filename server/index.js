@@ -18,7 +18,7 @@ const io = require('socket.io')(http);
 let onlineUser = ['Abc', 'Xyz', 'ISI', 'CBI', 'FBI', 'CID']
 
 //middlewares
-app.use(cors());
+/*app.use(cors());*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -45,8 +45,9 @@ io.on('connection', (socket) => {
 //parent route
 app.use('/index', get);
 
-//server running on port 3000
-app.listen(3002);
+http.listen(8080, () => {
+    console.log('started on port 8080');
+});
 
 //exporting the module
 module.exports = app;

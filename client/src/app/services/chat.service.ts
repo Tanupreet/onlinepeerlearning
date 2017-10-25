@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-
-//import { config } from '../../../config/configuration'
+import { config } from '../config';
 
 import * as io from 'socket.io-client';
 
 @Injectable()
 export class ChatService {
   private socket;
+  config = config
   
   sendMessage(message){
     this.socket.emit('add-message', message);    
@@ -16,7 +16,7 @@ export class ChatService {
 
   getMessages() {
     let observable = new Observable(observer => {
-      this.socket = io('192.168.252.152:3002'/*config.CHAT_URL*/);
+      this.socket = io(this.config.connect.url+this.config.connect.port);
       this.socket.on('message', (data) => {
         observer.next(data);    
       });
@@ -29,7 +29,7 @@ export class ChatService {
 
    getOnlineUsers() {
     let observable = new Observable(observer => {
-      this.socket = io('192.168.252.152:3002'/*config.CHAT_URL*/);
+      this.socket = io(this.config.connect.url+this.config.connect.port);
       this.socket.on('users', (data) => {
         observer.next(data);    
       });
