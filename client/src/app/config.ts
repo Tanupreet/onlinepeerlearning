@@ -1,7 +1,7 @@
 export const config: any = {
 
     connect: {
-        "url": "192.168.252.152:",
+        "url": "localhost:",
         "port": "8080"
     },
     editor: {
