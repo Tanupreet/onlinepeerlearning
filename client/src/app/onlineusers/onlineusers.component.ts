@@ -10,15 +10,14 @@ import { ChatService } from '../services/chat.service';
 export class OnlineusersComponent implements OnInit, OnDestroy {
 
   connection;
-  messages = [];
-  message;
-  /*users = ['Abc', 'Xyz', 'ISI', 'CBI', 'FBI', 'CID']
-*/
+  users:any;
+
   constructor(private chatService: ChatService) {}
 
   ngOnInit() {
-    this.connection = this.chatService.getOnlineUsers().subscribe(message => {
-      this.messages.push(message);
+    this.connection = this.chatService.getOnlineUsers().subscribe(user => {
+      this.users=user;
+      
     })
   }
 

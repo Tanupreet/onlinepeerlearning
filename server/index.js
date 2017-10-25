@@ -16,6 +16,22 @@ const io = require('socket.io')(http);
 
 
 let onlineUser = ['Abc', 'Xyz', 'ISI', 'CBI', 'FBI', 'CID']
+let people = [{
+        name: "Douglas  Pace"
+    },
+    {
+        name: "Mcleod  Mueller"
+    },
+    {
+        name: "Day  Meyers"
+    },
+    {
+        name: "Aguirre  Ellis"
+    },
+    {
+        name: "Cook  Tyson"
+    }
+];
 
 //middlewares
 /*app.use(cors());*/
@@ -38,7 +54,7 @@ io.on('connection', (socket) => {
     });
 
     /*console.log(this.onlineUser)*/
-    io.emit('users', onlineUser);
+    io.emit('users', people);
 
 });
 
