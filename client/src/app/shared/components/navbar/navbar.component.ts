@@ -11,6 +11,7 @@ import { config } from '../../config/config';
   styleUrls: ['./navbar.component.css'],
   providers: [ AuthenticationService ]
 })
+
 export class NavbarComponent implements OnInit {
 
   config = config
